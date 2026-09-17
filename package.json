@@ -1,0 +1,25 @@
+{
+  "name": "ivo-studio",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "sanity": "sanity dev",
+    "studio": "sanity dev"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "latest",
+    "lucide-react": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "three": "^0.186.0",
+    "@sanity/client": "latest",
+    "@sanity/image-url": "latest",
+    "@sanity/vision": "latest",
+    "sanity": "latest",
+    "nodemailer": "latest",
+    "vite": "latest"
+  }
+}
