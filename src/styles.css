@@ -3026,6 +3026,8 @@ a {
 body { font-size: 17px; }
 .nav-link { font-size: 15px; }
 .hero-main-copy { font-size: clamp(16px, 1.35vw, 19px); line-height: 1.65; max-width: 620px; }
+.hero-portrait { width: clamp(88px, 12vw, 150px); aspect-ratio: 4 / 5; margin-bottom: 26px; overflow: hidden; border-radius: 2px; opacity: .86; filter: grayscale(.15) contrast(1.05); }
+.hero-portrait img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .pill-btn { font-size: 14px; padding: 13px 24px; }
 .label-tag, .section-label, .eyebrow, .footer-kicker, .col-heading { font-size: 12px; }
 .project-row-name { font-size: clamp(21px, 2.2vw, 30px); }
@@ -3052,6 +3054,7 @@ body { font-size: 17px; }
 .also-building-grid h3 { font-size:22px; margin-bottom:16px; font-weight:500; }
 .also-building-grid p { color:var(--text-secondary); line-height:1.7; max-width:430px; }
 @media(max-width:700px){.also-building-grid{grid-template-columns:1fr;gap:42px}.home-project-index{padding-bottom:55px}.home-project-row{grid-template-columns:32px 1fr 28px;min-height:90px;gap:10px}.home-project-meta{display:none}.home-project-title{font-size:25px}.home-project-row img{right:16%;width:120px;height:84px}}
+.hero-portrait { margin-bottom: 20px; }
 .legacy-project-list { display:none !important; }
 .work-page { min-height:calc(100vh - var(--header-height)); }
 .work-page-intro, .work-empty-state { padding:13vh var(--container-pad) 10vh; }

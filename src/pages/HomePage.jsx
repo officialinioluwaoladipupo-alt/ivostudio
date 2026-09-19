@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { ArrowRight, ArrowUpRight, Plus, Minus, ExternalLink } from 'lucide-react';
 import { Silk } from '../components/Silk';
 import AccordionGallery from '../components/AccordionGallery';
-import { fetchHomeHero, fetchAlsoBuilding, urlFor } from '../lib/sanity';
+import { fetchHomeHero, fetchAlsoBuilding, fetchAbout, urlFor } from '../lib/sanity';
+import ResponsiveImage from '../components/ResponsiveImage';
 
 export function HomePage({ onNavigate, onSelectProject, projects = [] }) {
   const [expandedProject, setExpandedProject] = useState(projects[0]?.id || projects[0]?._id || null);
   const [heroData, setHeroData] = useState(null);
   const [alsoBuilding, setAlsoBuilding] = useState([]);
+  const [aboutData, setAboutData] = useState(null);
   const [loadingHero, setLoadingHero] = useState(true);
   const [loadingAlsoBuilding, setLoadingAlsoBuilding] = useState(true);
 
@@ -33,6 +35,12 @@ export function HomePage({ onNavigate, onSelectProject, projects = [] }) {
       .finally(() => {
         if (!cancelled) setLoadingAlsoBuilding(false);
       });
+
+    fetchAbout()
+      .then((data) => {
+        if (!cancelled && data) setAboutData(data);
+      })
+      .catch((err) => console.warn('Could not fetch About image from Sanity:', err));
 
     return () => {
       cancelled = true;
@@ -71,6 +79,11 @@ export function HomePage({ onNavigate, onSelectProject, projects = [] }) {
         </div>
 
         <div className="hero-content-wrapper">
+          {aboutData?.photo && (
+            <div className="hero-portrait" aria-hidden="true">
+              <ResponsiveImage source={urlFor(aboutData.photo)} alt="" width={520} height={650} sizes="180px" priority decorative />
+            </div>
+          )}
           {heroData?.eyebrow && <p className="hero-eyebrow">{heroData.eyebrow}</p>}
           
           <h1 className="hero-main-title">
